@@ -22,8 +22,10 @@ def StarPlots():
     instituicao1 = input("Escolha a instituição 1 que deseja comparar(colocar sigla): ")
     instituicao2 = input("Escolha a instituição 2 que deseja comparar(colocar sigla): ")
     plot2 = df[df["Sigla da IES"]== instituicao1]
-    print(plot2[["Sigla da IES","Área de Avaliação"]])
+    print(plot2[["Sigla da IES","Área de Avaliação", "Conceito Enade (Contínuo)"]])
     plot3 = df[df["Sigla da IES"]== instituicao2]
+    print(plot3[["Sigla da IES","Área de Avaliação", "Conceito Enade (Contínuo)"]])
+
 
     fig2 = make_subplots(rows=1, cols=4, specs=[[{'type': 'polar'}] * 4] * 1)
     fig2.add_trace(
@@ -31,18 +33,22 @@ def StarPlots():
             theta=plot2["Área de Avaliação"],
             r=plot2["Conceito Enade (Contínuo)"],
             fill='toself',
+            name = instituicao1
         ),
         row=1,
         col=2,
+        
     )
     fig2.add_trace(
         go.Scatterpolar(
             theta=plot3["Área de Avaliação"],
             r=plot3["Conceito Enade (Contínuo)"],
             fill='toself',
+            name = instituicao2
         ),
         row=1,
         col=4,
+        
     )
     fig2.update_layout(height=800, width = 1400)
     fig2.show()
@@ -56,6 +62,9 @@ def Medias():
     print("A variancia do conceito geral eh: ")
     variancia = df["Conceito Enade (Contínuo)"].var()
     print(round(variancia, 2))
+    print("A moda do conceito geral(Faixa) eh: ")
+    moda = df["Conceito Enade (Faixa)"].mode()
+    print(moda)
     print("A mediana do conceito geral eh: ")
     mediana = df["Conceito Enade (Contínuo)"].median()
     print(round(mediana, 2))
@@ -76,7 +85,7 @@ def Medias():
         )
     )
 
-
+    
     fig.show()
     
     
