@@ -46,7 +46,7 @@ def StarPolar():
     fig2.show()
 
 def Medias():
-    fig= px.histogram(DF, x="Conceito Enade (Contínuo)")
+    fig= px.histogram(df, x="Conceito Enade (Contínuo)")
     print("A media do conceito geral eh: ")
     media = df["Conceito Enade (Contínuo)"].mean()
     print(round(media, 2))
