@@ -7,7 +7,7 @@ import plotly.graph_objects as go
 #IMPORTANDO BASE DE DADOS
 df = pd.read_csv("C:/Users/gabri/OneDrive/Documentos/6Semestre/labprog/python/Trabalho2/TrabalhoPython/Conceito_Enade_2019.csv")
 df["Conceito Enade (Faixa)"] = pd.to_numeric(df["Conceito Enade (Faixa)"], errors="coerce")
-#ESCOLHENDO OM CURSO
+#FUNÇOES
 def Histrograma():
     area = input("Escolha o curso: ")
     plot1 = df[df["Área de Avaliação"] == area]
@@ -54,7 +54,6 @@ def StarPlots():
     fig2.show()
 
 def Medias():
-    #fig= px.histogram(df, x="Conceito Enade (Contínuo)")
     fig = go.Figure()
     print("A media do conceito geral eh: ")
     media = df["Conceito Enade (Contínuo)"].mean()
@@ -89,7 +88,7 @@ def Medias():
     fig.show()
     
     
-    
+#MAIN
 print("Escolha que tipo de estatistica quer comparar: ")
 print("1-Comparar qual faculdade tem o melhor conceito em um determinado curso: ")
 print("2-Comparar conceitos dos cursos entre 2 faculdades ")
